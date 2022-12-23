@@ -34,7 +34,7 @@ namespace HairSalon.Controllers
     {
       if (client.StylistId == 0)
       {
-        return RedirectToAction("Create");
+        return RedirectToAction("Create", "Stylists");
       }
       _db.Clients.Add(client);
       _db.SaveChanges();

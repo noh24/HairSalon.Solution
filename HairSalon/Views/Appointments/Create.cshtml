@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Appointment
+
+<h1>Add Appointment Info</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.DateTime)
+  @Html.TextBoxFor(model => model.DateTime, new { type="datetime-local" })
+
+  @Html.LabelFor(model => model.Price)
+  @Html.TextBoxFor(model => model.Price, new { type="number", min="0" })
+
+  @Html.LabelFor(model => model.Client)
+  @Html.DropDownList("ClientId")
+
+  @Html.LabelFor(model => model.Stylist)
+  @Html.DropDownList("StylistId")
+
+  <input type="submit" value="Add Appointment">
+}
