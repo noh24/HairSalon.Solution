@@ -1,0 +1,16 @@
+@{
+  Layout="_Layout";
+}
+@model HairSalon.Models.Appointment
+
+<h1>Appointment Info</h1>
+
+<p>Client: @Html.DisplayFor(model => model.Client.Name)</p>
+<p>Stylist: @Html.DisplayFor(model => model.Stylist.Name)</p>
+<p>Time: @Html.DisplayFor(model => model.DateTime)</p>
+
+<p>@Html.ActionLink($"Edit Appointment", "Edit", new { id = Model.AppointmentId })</p>
+@using (Html.BeginForm("Delete", "Appointments", routeValues: new { id = Model.AppointmentId }))
+{
+  <input type="submit" value="Delete" class="">
+}

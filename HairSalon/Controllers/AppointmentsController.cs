@@ -21,6 +21,7 @@ namespace HairSalon.Controllers
       List<Appointment> model = _db.Appointments
         .Include(appointment => appointment.Stylist)
         .Include(appointment => appointment.Client)
+        .OrderBy(appointment => appointment.DateTime)
         .ToList();
       return View(model);
     }
@@ -47,13 +48,14 @@ namespace HairSalon.Controllers
       return RedirectToAction("Index");
     }
 
-    // public ActionResult Details(int id)
-    // {
-    //   Client thisClient = _db.Clients
-    //     .Include(client => client.Stylist)
-    //     .FirstOrDefault(client => client.ClientId == id);
-    //   return View(thisClient);
-    // }
+    public ActionResult Details(int id)
+    {
+      Appointment thisAppointment = _db.Appointments
+        .Include(appointment => appointment.Stylist)
+        .Include(appointment => appointment.Client)
+        .FirstOrDefault(appointment => appointment.AppointmentId == id);
+      return View(thisAppointment);
+    }
 
     // public ActionResult Edit(int id)
     // {
