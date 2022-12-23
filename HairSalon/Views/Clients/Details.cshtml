@@ -8,7 +8,7 @@
 <h3>Client Info</h3>
 <p>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</p>
 
-<p>@Html.ActionLink($"Edit Client {Model.Name}", "Edit", new { id = Model.ClientId })</p>
+<p>@Html.ActionLink($"Edit Client", "Edit", new { id = Model.ClientId })</p>
 @using (Html.BeginForm("Delete", "Clients", routeValues: new { id = Model.ClientId }))
 {
   <input type="submit" value="Delete" class="">
