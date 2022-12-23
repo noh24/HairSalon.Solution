@@ -9,7 +9,7 @@
 <p>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</p>
 
 <p>@Html.ActionLink($"Edit Client {Model.Name}", "Edit", new { id = Model.ClientId })</p>
-@using (Html.BeginForm("Delete", "Client", routeValues: new { id = Model.ClientId }))
+@using (Html.BeginForm("Delete", "Clients", routeValues: new { id = Model.ClientId }))
 {
   <input type="submit" value="Delete" class="">
 }
