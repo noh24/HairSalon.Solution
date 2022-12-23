@@ -6,6 +6,7 @@
 <h1>Edit @Html.DisplayFor(model => model.Name)</h1>
 @using (Html.BeginForm())
 {
+  @Html.HiddenFor(model => model.StylistId)
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name)
   <input type="submit" value="Save Changes">

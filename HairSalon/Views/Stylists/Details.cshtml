@@ -16,13 +16,13 @@ else
     <h3>Clients: </h3>
     @foreach(Client client in Model.Clients)
     {
-      <li>@Html.ActionLink($"{client.Name}", "Details", "Client", new { id = client.ClientId })</li>
+      <li>@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</li>
     }
   </ul>
 }
-<p>@Html.ActionLink("Add Client", "Create", "Client")</p>
+<p>@Html.ActionLink("Add Client", "Create", "Clients")</p>
 <p>@Html.ActionLink($"Edit Stylist {Model.Name}", "Edit", new { id = Model.StylistId })</p>
-@using (Html.BeginForm("Delete", "Stylist", routeValues: new { id = Model.StylistId }))
+@using (Html.BeginForm("Delete", "Stylists", routeValues: new { id = Model.StylistId }))
 {
   <input type="Submit" value="Delete" class="">
 }

@@ -20,7 +20,7 @@ else
     {
       <tr>
         <td>@Html.ActionLink($"{client.Name}", "Details", new { id = client.ClientId })</td>
-        <td>@Html.ActionLink($"{client.Stylist.Name}", "Details", "Stylist", new { id = client.Stylist.StylistId })</td>
+        <td>@Html.ActionLink($"{client.Stylist.Name}", "Details", "Stylists", new { id = client.Stylist.StylistId })</td>
       </tr>
     }
   </table>
