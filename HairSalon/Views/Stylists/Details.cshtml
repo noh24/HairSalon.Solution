@@ -1,5 +1,5 @@
 @{
-  Layout="_Layout";
+  Layout = "_Layout";
 }
 @model HairSalon.Models.Stylist
 @using HairSalon.Models
@@ -8,20 +8,38 @@
 
 @if (Model.Clients.Count == 0)
 {
-  <p>There are no clients added.</p>
+  <p>There are no clients.</p>
 }
 else
 {
-  <ul>
-    <h3>Clients: </h3>
-    @foreach(Client client in Model.Clients)
+  <h3>Clients: </h3>
+  <ul class="list-unstyled">
+    @foreach (Client client in Model.Clients)
     {
       <li>@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</li>
     }
   </ul>
 }
+
+@if (Model.Appointments.Count == 0)
+{
+  <p>There are no appointments.</p>
+}
+else
+{
+  <h3>Appointments: </h3>
+  <ul class="list-unstyled">
+    @foreach (Appointment appointment in Model.Appointments)
+    {
+      <li>@Html.ActionLink($"{appointment.DateTime}", "Details", "Appointments", new { id = appointment.AppointmentId })</li>
+      <li>@appointment.Client.Name</li>
+    }
+  </ul>
+}
+
 <p>@Html.ActionLink("Add Client", "Create", "Clients")</p>
-<p>@Html.ActionLink($"Edit Stylist {Model.Name}", "Edit", new { id = Model.StylistId })</p>
+<p>@Html.ActionLink("Add Appointment", "Create", "Appointments")</p>
+<p>@Html.ActionLink($"Edit Stylist", "Edit", new { id = Model.StylistId })</p>
 @using (Html.BeginForm("Delete", "Stylists", routeValues: new { id = Model.StylistId }))
 {
   <input type="Submit" value="Delete" class="">
