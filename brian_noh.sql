@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: favorite_restaurants
+-- Host: localhost    Database: brian_noh
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -16,34 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cuisines`
+-- Table structure for table `clients`
 --
 
-DROP TABLE IF EXISTS `cuisines`;
+DROP TABLE IF EXISTS `clients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cuisines` (
+CREATE TABLE `clients` (
+  `ClientId` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
-  `CuisineId` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`CuisineId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `StylistId` int DEFAULT '0',
+  PRIMARY KEY (`ClientId`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `restaurants`
+-- Table structure for table `stylists`
 --
 
-DROP TABLE IF EXISTS `restaurants`;
+DROP TABLE IF EXISTS `stylists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `restaurants` (
+CREATE TABLE `stylists` (
+  `StylistId` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
-  `RestaurantId` int NOT NULL AUTO_INCREMENT,
-  `PriceRange` varchar(255) DEFAULT NULL,
-  `Rating` int DEFAULT '0',
-  `CuisineId` int DEFAULT '0',
-  PRIMARY KEY (`RestaurantId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`StylistId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +53,4 @@ CREATE TABLE `restaurants` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-21 17:45:04
+-- Dump completed on 2022-12-23 16:04:36
