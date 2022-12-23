@@ -13,16 +13,16 @@ else
 {
   <table class="mx-auto my-4">
     <tr>
-      <th>Date-Time</th>
       <th>Client</th>
       <th>Stylist</th>
+      <th>Date-Time</th>
     </tr>
     @foreach(Appointment appointment in Model)
     {
       <tr>
-        <td>@Html.ActionLink($"{(appointment.DateTime).ToString("yyyy-MM-dd HH:mm")}", "Details", new { id = appointment.AppointmentId })</td>
         <td>@Html.ActionLink($"{appointment.Client.Name}", "Details", "Clients", new { id = appointment.Client.StylistId })</td>
         <td>@Html.ActionLink($"{appointment.Stylist.Name}", "Details", "Stylists", new { id = appointment.Stylist.StylistId })</td>
+        <td>@Html.ActionLink($"{(appointment.DateTime).ToString("yyyy-MM-dd HH:mm")}", "Details", new { id = appointment.AppointmentId })</td>
       </tr>
     }
   </table>
