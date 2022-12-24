@@ -47,10 +47,10 @@ namespace HairSalon.Controllers
         .Include(client => client.Stylist)
         .Include(stylist => stylist.Appointments)
         .FirstOrDefault(client => client.ClientId == id);
-      List<Appointment> model = _db.Appointments
-        .Include(appointment => appointment.Client)
-        .Include(appointment => appointment.Stylist)
-        .ToList();
+      // List<Appointment> model = _db.Appointments
+      //   .Include(appointment => appointment.Client)
+      //   .Include(appointment => appointment.Stylist)
+      //   .ToList();
       return View(thisClient);
     }
 
@@ -71,7 +71,9 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Delete(int id)
     {
-      Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      Client thisClient = _db.Clients
+        .Include(client => client.Appointments)
+        .FirstOrDefault(client => client.ClientId == id);
       _db.Clients.Remove(thisClient);
       _db.SaveChanges();
       return RedirectToAction("Index");
