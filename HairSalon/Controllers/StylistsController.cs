@@ -39,10 +39,10 @@ namespace HairSalon.Controllers
         .Include(stylist => stylist.Clients)
         .Include(stylist => stylist.Appointments)
         .FirstOrDefault(stylist => stylist.StylistId == id);
-      List<Appointment> model = _db.Appointments
-        .Include(appointment => appointment.Client)
-        .Include(appointment => appointment.Stylist)
-        .ToList();
+      // List<Appointment> model = _db.Appointments
+      //   .Include(appointment => appointment.Client)
+      //   .Include(appointment => appointment.Stylist)
+      //   .ToList();
       return View(thisStylist);
     }
 

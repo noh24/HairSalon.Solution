@@ -2,29 +2,31 @@
   Layout="_Layout";
 }
 @using HairSalon.Models
-
-<h1>Appointment Database</h1>
-
-@if (Model.Count == 0)
-{
-  <p>There are no appointments.</p>
-}
-else
-{
-  <table class="mx-auto my-4">
-    <tr>
-      <th>Client</th>
-      <th>Stylist</th>
-      <th>Date-Time</th>
-    </tr>
-    @foreach(Appointment appointment in Model)
-    {
+<div class="w-2/3 flex flex-col items-center">
+  <h1 class="text-5xl py-10">Appointment Database</h1>
+  @if (Model.Count == 0)
+  {
+    <p class="text-xl">There are no appointments.</p>
+  }
+  else
+  {
+    <table class="mx-auto w-full shadow-inner text-center capitalize text-lg">
       <tr>
-        <td>@Html.ActionLink($"{appointment.Client.Name}", "Details", "Clients", new { id = appointment.Client.ClientId })</td>
-        <td>@Html.ActionLink($"{appointment.Stylist.Name}", "Details", "Stylists", new { id = appointment.Stylist.StylistId })</td>
-        <td>@Html.ActionLink($"{(appointment.DateTime).ToString("yyyy-MM-dd HH:mm")}", "Details", new { id = appointment.AppointmentId })</td>
+        <th class="py-2 font-light border-r-2">Client</th>
+        <th class="font-light border-r-2">Stylist</th>
+        <th class="font-light">Date-Time</th>
       </tr>
-    }
-  </table>
-}
-<p>@Html.ActionLink("Add Appointment", "Create")</p>
+      @foreach(Appointment appointment in Model)
+      {
+        <tr class="hover:bg-slate-50 hover:font-semibold">
+          <td class="py-2">@Html.ActionLink($"{appointment.Client.Name}", "Details", "Clients", new { id = appointment.Client.ClientId })</td>
+          <td>@Html.ActionLink($"{appointment.Stylist.Name}", "Details", "Stylists", new { id = appointment.Stylist.StylistId })</td>
+          <td>@Html.ActionLink($"{(appointment.DateTime).ToString("yyyy-MM-dd HH:mm")}", "Details", new { id = appointment.AppointmentId })</td>
+        </tr>
+      }
+    </table>
+  }
+  <div class="flex gap-3 px-4 py-2">
+    <p class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">@Html.ActionLink("Add Appointment", "Create")</p>
+  </div>
+</div>

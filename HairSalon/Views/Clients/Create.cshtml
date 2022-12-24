@@ -1,19 +1,25 @@
 @{
   Layout="_Layout";
 }
+@using System.Collections.Generic
 @model HairSalon.Models.Client
+<div class="w-2/3 flex flex-col items-center">
+  <h1 class="text-5xl py-10">Add Client</h1>
 
-<h1>Add Client Info</h1>
-
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
-
-  @Html.LabelFor(model => model.Stylist)
-  @Html.DropDownList("StylistId")
-
-  <input type="submit" value="Add Client">
-}
-<p><strong>NOTE:</strong> You need to have at least one stylist before you can add an client!</p>
-<p>Go to @Html.ActionLink("this page", "Create", "Stylists") to create a category.</p>
+  @using (Html.BeginForm(FormMethod.Post, new { @class="text-lg capitalize text-center shadow-inner flex flex-col p-10"}))
+  {
+    <div class="py-5 space-x-3">
+      @Html.LabelFor(model => model.Name, new {@class="font-semibold"})
+      @Html.TextBoxFor(model => model.Name, new {@class="border rounded-xl text-center border-slate-300 shadow-sm hover:border-slate-400 outline-slate-300 text-slate-500"} )
+    </div>
+    <div class="py-5 space-x-3">
+      @Html.LabelFor(model => model.Stylist, new {@class="font-semibold"})
+      @Html.DropDownList("StylistId", null, new {@class=" rounded-xl text-center border-0 border-b-2 shadow-sm hover:border-slate-400 outline-slate-50 text-slate-700 w-2/3 py-1"})
+    </div>
+    <div>
+      <input type="submit" value="Add Client" class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md hover:cursor-pointer">
+    </div>
+  }
+  <p class="py-4 mt-3"><strong class="text-red-500">NOTE:</strong> You need to have at least one stylist before you can add an client!</p>
+  <p>Go to <span class="underline">@Html.ActionLink("this page", "Create", "Stylists")</span> to create a category.</p>
+</div>

@@ -3,43 +3,58 @@
 }
 @model HairSalon.Models.Stylist
 @using HairSalon.Models
-
-<h1>Stylist @Html.DisplayFor(model => model.Name)</h1>
-
-@if (Model.Clients.Count == 0)
-{
-  <p>There are no clients.</p>
-}
-else if (Model.Clients.Count != 0)
-{
-  <h3>Clients: </h3>
-  <ul class="list-unstyled">
-    @foreach (Client client in Model.Clients)
+<div class="w-2/3 flex flex-col items-center">
+  <h1 class="text-5xl py-10">Stylist <span class="capitalize">@Html.DisplayFor(model => model.Name)</span></h1>
+  <div class="text-lg capitalize shadow-inner w-full text-center overflow-auto">
+    <div class="flex">
+      <div class="w-full">
+        <h3 class="text-3xl py-5 font-light">Clients</h3>
+        @if (Model.Clients.Count == 0)
+        {
+          <p class="text-xl normal-case">There are no clients.</p>
+        }
+        else
+        {
+          <ul class="">
+            @foreach (Client client in Model.Clients)
+            {
+              <li class="py-3 hover:bg-slate-50 hover:font-bold font-semibold">@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</li>
+            }
+          </ul>
+        }
+      </div>
+      <div class="w-full">
+        <h3 class="text-3xl py-5 font-light border-t-2 border-neutral-50">Appointments</h3>
+        @if (Model.Appointments.Count == 0)
+        {
+          <p class="text-xl normal-case">There are no appointments.</p>
+        }
+        else
+        {
+          <table class="mx-auto w-full shadow-inner">
+            <tr>
+              <th class="py-2 font-light border-r-2">Appointment Time</th>
+              <th class="font-light">Client</th>
+            </tr>
+            @foreach (Appointment appointment in Model.Appointments)
+            {
+              <tr class="hover:bg-slate-50 hover:font-semibold">
+                <td class="py-2">@Html.ActionLink($"{appointment.DateTime}", "Details", "Appointments", new { id = appointment.AppointmentId })</td>
+                <td>@appointment.Client.Name</td>
+              </tr>
+            }
+          </table>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-3 px-4 py-2">
+    <p class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">@Html.ActionLink("Add Client", "Create", "Clients")</p>
+    <p class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">@Html.ActionLink("Add Appointment", "Create", "Appointments")</p>
+    <p class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">@Html.ActionLink($"Edit Stylist", "Edit", new { id = Model.StylistId })</p>
+    @using (Html.BeginForm("Delete", "Stylists", routeValues: new { id = Model.StylistId }))
     {
-      <li>@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</li>
+      <input type="Submit" value="Delete" class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">
     }
-  </ul>
-}
-else if (Model.Appointments.Count == 0)
-{
-  <h3>Appointments: </h3>
-  <p>There are no appointments.</p>
-}
-else if (Model.Appointments.Count != 0)
-{
-  <ul class="list-unstyled">
-    @foreach (Appointment appointment in Model.Appointments)
-    {
-      <li>@Html.ActionLink($"{appointment.DateTime}", "Details", "Appointments", new { id = appointment.AppointmentId })</li>
-      <li>@appointment.Client.Name</li>
-    }
-  </ul>
-}
-
-<p>@Html.ActionLink("Add Client", "Create", "Clients")</p>
-<p>@Html.ActionLink("Add Appointment", "Create", "Appointments")</p>
-<p>@Html.ActionLink($"Edit Stylist", "Edit", new { id = Model.StylistId })</p>
-@using (Html.BeginForm("Delete", "Stylists", routeValues: new { id = Model.StylistId }))
-{
-  <input type="Submit" value="Delete" class="">
-}
+  </div>
+</div>

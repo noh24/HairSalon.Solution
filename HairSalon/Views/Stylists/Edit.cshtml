@@ -2,12 +2,18 @@
   Layout="_Layout";
 }
 @model HairSalon.Models.Stylist
+<div class="w-2/3 flex flex-col items-center">
+  <h1 class="text-5xl py-10">Edit <span class="capitalize">@Html.DisplayFor(model => model.Name)</span></h1>
 
-<h1>Edit @Html.DisplayFor(model => model.Name)</h1>
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.StylistId)
-  @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name)
-  <input type="submit" value="Save Changes">
-}
+  @using (Html.BeginForm(FormMethod.Post, new { @class="text-lg capitalize text-center shadow-inner flex flex-col p-10"}))
+  {
+    <div class="py-5 space-x-3">
+      @Html.HiddenFor(model => model.StylistId)
+      @Html.LabelFor(model => model.Name, new {@class="font-semibold"})
+      @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class="border rounded-xl text-center border-slate-300 shadow-sm hover:border-slate-400 outline-slate-300 text-slate-500"}})
+    </div>
+    <div>
+      <input type="submit" value="Save Changes" class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md hover:cursor-pointer">
+    </div>
+  }
+</div>
