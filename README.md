@@ -1,6 +1,6 @@
 # Eau Claire's Salon
 
-#### Tracks Eau Claire's Salon stylists and clients
+#### Tracks Eau Claire's Salon stylists, clients, and appointments
 
 #### By [Brian Noh](https://github.com/noh24)
 
@@ -18,7 +18,7 @@
 
 ## Description
 
-Eau Claire's Salon lets owner to add and track her stylists and their clients.
+Eau Claire's Salon lets owner to add and track her stylists, clients and appointments.
 
 ## Setup/Installation Requirements
 
