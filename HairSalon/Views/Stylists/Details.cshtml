@@ -4,7 +4,7 @@
 @model HairSalon.Models.Stylist
 @using HairSalon.Models
 <div class="w-2/3 flex flex-col items-center">
-  <h1 class="text-5xl py-10">Stylist @Html.DisplayFor(model => model.Name, new {@class="capitalize"})</h1>
+  <h1 class="text-5xl py-10">Stylist <span class="capitalize">@Html.DisplayFor(model => model.Name)</span></h1>
   <div class="text-lg capitalize shadow-inner w-full text-center overflow-auto">
     <div class="flex">
       <div class="w-full">

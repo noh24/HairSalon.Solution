@@ -3,7 +3,7 @@
 }
 @model HairSalon.Models.Stylist
 <div class="w-2/3 flex flex-col items-center">
-  <h1 class="text-5xl py-10">Edit @Html.DisplayFor(model => model.Name)</h1>
+  <h1 class="text-5xl py-10">Edit <span class="capitalize">@Html.DisplayFor(model => model.Name)</span></h1>
 
   @using (Html.BeginForm(FormMethod.Post, new { @class="text-lg capitalize text-center shadow-inner flex flex-col p-10"}))
   {
