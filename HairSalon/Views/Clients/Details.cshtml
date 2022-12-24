@@ -2,13 +2,31 @@
   Layout="_Layout";
 }
 @model HairSalon.Models.Client
+@using HairSalon.Models
 
 <h1>Client @Html.DisplayFor(model => model.Name)</h1>
 
 <h3>Client Info</h3>
 <p>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</p>
 
-<p>@Html.ActionLink($"Edit Client {Model.Name}", "Edit", new { id = Model.ClientId })</p>
+<h3>Appointments: </h3>
+@if (Model.Appointments.Count == 0)
+{
+  <p>There are no appointments.</p>
+}
+else
+{
+  <ul class="list-unstyled">
+    @foreach (Appointment appointment in Model.Appointments)
+    {
+      <li>@Html.ActionLink($"{appointment.DateTime}", "Details", "Appointments", new { id = appointment.AppointmentId })</li>
+      <li>@appointment.Stylist.Name</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink($"Edit Client", "Edit", new { id = Model.ClientId })</p>
+<p>@Html.ActionLink("Add Appointment", "Create", "Appointments")</p>
 @using (Html.BeginForm("Delete", "Clients", routeValues: new { id = Model.ClientId }))
 {
   <input type="submit" value="Delete" class="">

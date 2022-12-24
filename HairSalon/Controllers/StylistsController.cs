@@ -37,7 +37,12 @@ namespace HairSalon.Controllers
     {
       Stylist thisStylist = _db.Stylists
         .Include(stylist => stylist.Clients)
+        .Include(stylist => stylist.Appointments)
         .FirstOrDefault(stylist => stylist.StylistId == id);
+      List<Appointment> model = _db.Appointments
+        .Include(appointment => appointment.Client)
+        .Include(appointment => appointment.Stylist)
+        .ToList();
       return View(thisStylist);
     }
 
@@ -57,7 +62,10 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Delete(int id)
     {
-      Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      Stylist thisStylist = _db.Stylists
+        .Include(stylist => stylist.Clients)
+        .Include(stylist => stylist.Appointments)
+        .FirstOrDefault(stylist => stylist.StylistId == id);
       _db.Stylists.Remove(thisStylist);
       _db.SaveChanges();
       return RedirectToAction("Index");

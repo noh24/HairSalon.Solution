@@ -1,0 +1,30 @@
+@{
+  Layout="_Layout";
+}
+@using HairSalon.Models
+
+<h1>Appointment Database</h1>
+
+@if (Model.Count == 0)
+{
+  <p>There are no appointments.</p>
+}
+else
+{
+  <table class="mx-auto my-4">
+    <tr>
+      <th>Client</th>
+      <th>Stylist</th>
+      <th>Date-Time</th>
+    </tr>
+    @foreach(Appointment appointment in Model)
+    {
+      <tr>
+        <td>@Html.ActionLink($"{appointment.Client.Name}", "Details", "Clients", new { id = appointment.Client.ClientId })</td>
+        <td>@Html.ActionLink($"{appointment.Stylist.Name}", "Details", "Stylists", new { id = appointment.Stylist.StylistId })</td>
+        <td>@Html.ActionLink($"{(appointment.DateTime).ToString("yyyy-MM-dd HH:mm")}", "Details", new { id = appointment.AppointmentId })</td>
+      </tr>
+    }
+  </table>
+}
+<p>@Html.ActionLink("Add Appointment", "Create")</p>
