@@ -1,0 +1,24 @@
+{
+  "name": "hairsalon.solution",
+  "version": "1.0.0",
+  "description": "- CSS\r - HTML\r - C#\r - .NET 6.0\r - ASP.Net\r - Razor\r - MySQL\r - Workbench\r - EF Core",
+  "main": "index.js",
+  "scripts": {
+    "tw-build": "tailwindcss -i ./HairSalon/wwwroot/css/input.css -o ./HairSalon/wwwroot/css/output.css",
+    "tw-watch": "tailwindcss -i ./HairSalon/wwwroot/css/input.css -o ./HairSalon/wwwroot/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noh24/HairSalon.Solution.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noh24/HairSalon.Solution/issues"
+  },
+  "homepage": "https://github.com/noh24/HairSalon.Solution#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
