@@ -3,18 +3,17 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Favorite Restaurants</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="~/css/styles.css">
+  <title>Eau Claire's HairSalon Tracker</title>
+  <link rel="stylesheet" href="~/css/output.css">
 </head>
 
-<body class="d-flex flex-column align-items-center justify-content-center p-4">
+<body class="bg-slate-50">
   @await Html.PartialAsync("Navbar")
-  <div class="jumbotron p-4 text-center shadow-lg bg-white w-100" id="jumb">
+  <div class="container relative mx-auto flex flex-col items-center justify-center h-screen bg-white">
     @RenderBody()
     @* @await Html.PartialAsync("Footer") *@
   </div>
+  @await Html.PartialAsync("Footer")
 </body>
 
 </html>
