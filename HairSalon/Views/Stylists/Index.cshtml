@@ -10,13 +10,14 @@
   }
   else
   {
-    <ul class="text-lg capitalize w-full text-center overflow-auto shadow-inner border-b-2 border-neutral-50">
+    <table class="text-lg capitalize w-full text-center overflow-auto shadow-inner border-b-2 border-neutral-50">
       @foreach(Stylist stylist in Model)
       {
-
-        <li class="py-3 hover:bg-slate-50 hover:font-bold font-semibold">@Html.ActionLink($"{stylist.Name}", "Details", new { id = stylist.StylistId})</li>
+        <tr class="even:bg-slate-50">
+          <td class="py-3 hover:font-bold font-semibold">@Html.ActionLink($"{stylist.Name}", "Details", new { id = stylist.StylistId})</td>
+        </tr>
       }
-    </ul>
+    </table>
   }
 <p class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">@Html.ActionLink("Add Stylist", "Create")</p>
 </div >

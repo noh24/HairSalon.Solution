@@ -15,12 +15,14 @@
         }
         else
         {
-          <ul class="">
+          <table class="w-full">
             @foreach (Client client in Model.Clients)
             {
-              <li class="py-3 hover:bg-slate-50 hover:font-bold font-semibold">@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</li>
+              <tr class="odd:bg-slate-50 text-center">
+                <td class="py-3 hover:font-bold font-semibold text-center">@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</td>
+              </tr>
             }
-          </ul>
+          </table>
         }
       </div>
       <div class="w-full">
@@ -38,7 +40,7 @@
             </tr>
             @foreach (Appointment appointment in Model.Appointments)
             {
-              <tr class="hover:bg-slate-50 hover:font-semibold">
+              <tr class="odd:bg-slate-50 hover:font-semibold">
                 <td class="py-2">@Html.ActionLink($"{appointment.DateTime}", "Details", "Appointments", new { id = appointment.AppointmentId })</td>
                 <td>@appointment.Client.Name</td>
               </tr>

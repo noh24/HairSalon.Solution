@@ -5,10 +5,10 @@
 <div class="w-2/3 flex flex-col items-center">
   <h1 class="text-5xl py-10">Appointment</h1>
   <div class="text-lg capitalize shadow-inner w-full text-center overflow-auto ">
-    <p class="hover:bg-slate-50 py-3"><span class="font-semibold">Client</span> @Html.DisplayFor(model => model.Client.Name)</p>
-    <p class="hover:bg-slate-50 py-3"><span class="font-semibold">Stylist</span> @Html.DisplayFor(model => model.Stylist.Name)</p>
-    <p class="hover:bg-slate-50 py-3"><span class="font-semibold">Price</span> $@Html.DisplayFor(model => model.Price)</p>
-    <p class="hover:bg-slate-50 py-3"><span class="font-semibold">Time</span> @Html.DisplayFor(model => model.DateTime)</p>
+    <p class=" py-3"><span class="font-semibold">Client</span> @Html.DisplayFor(model => model.Client.Name)</p>
+    <p class="bg-slate-50 py-3"><span class="font-semibold">Stylist</span> @Html.DisplayFor(model => model.Stylist.Name)</p>
+    <p class=" py-3"><span class="font-semibold">Price</span> $@Html.DisplayFor(model => model.Price)</p>
+    <p class="bg-slate-50 py-3"><span class="font-semibold">Time</span> @Html.DisplayFor(model => model.DateTime)</p>
   </div>
   <div class="flex gap-3 px-4 py-2">
     <p class="text-md border rounded-full mt-5 px-3 py-1 bg-slate-50 hover:bg-slate-300 hover:border-slate-300 border-slate-50 hover:text-white shadow-md">@Html.ActionLink($"Edit Appointment", "Edit", new { id = Model.AppointmentId })</p>
