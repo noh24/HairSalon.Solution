@@ -41,6 +41,8 @@ Eau Claire's Salon lets owner to add and track her stylists, clients and appoint
   - Open MySQL Workbench and access Local instance 3306 under MySQL Connections
   - Click on the "Administration Tab", and select "Data Import/Restore" from the list
   - Select "Import from Self-Contained File" and find file named "brian_noh.sql" located at Desktop/HairSalon.Solution/brian_noh.sql
+  - Underneath the "Import from Self-Contained File", you will see "Default Schema to be Imported To":
+    - Click on the "New..." button and enter in brian_noh (This is to name the database schema)
   - Start Import
 - Create .gitignore file:
   ```
@@ -60,9 +62,14 @@ Eau Claire's Salon lets owner to add and track her stylists, clients and appoint
     }' > appsettings.json
   ```
   [PASSWORD] is your password
+- Install npm packages:
+  ```
+   ~/Desktop/HairSalon.Solution/ $ npm install
+  ```
 - Build the project:
   ```
    ~/Desktop/HairSalon.Solution/ $ dotnet build HairSalon/
+
   ```
 - Run the project
   ```
